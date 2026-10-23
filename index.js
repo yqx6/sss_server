@@ -274,6 +274,12 @@ http
     }
     // 上传视频：POST /uploadVideo?p=<目标目录>&name=<文件名>，请求体为文件二进制
     if (url.pathname === "/uploadVideo") {
+      const user = url.searchParams.get("user") || "";
+      if (user !== "Cloud9") {
+        res.writeHead(403, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ msg: "forbidden: only Cloud9 can upload" }));
+        return;
+      }
       const targetDir = url.searchParams.get("p") || ".";
       const rawName = url.searchParams.get("name") || "upload.mp4";
       const safeName = path.basename(rawName);
