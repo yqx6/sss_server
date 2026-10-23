@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require("fs");
+const path = require('path');
 const http = require("http");
 
 const {
@@ -271,6 +272,40 @@ http
         res.end("Error streaming video");
       });
     }
+    // 上传视频：POST /uploadVideo?p=<目标目录>&name=<文件名>，请求体为文件二进制
+    if (url.pathname === "/uploadVideo") {
+      const targetDir = url.searchParams.get("p") || ".";
+      const rawName = url.searchParams.get("name") || "upload.mp4";
+      const safeName = path.basename(rawName);
+      try {
+        fs.mkdirSync(targetDir, { recursive: true });
+      } catch (e) {
+        console.error("mkdir error:", e);
+      }
+      const dest = path.join(targetDir, safeName);
+      const ws = fs.createWriteStream(dest);
+      req.pipe(ws);
+      req.on("error", (e) => {
+        console.error("upload req error:", e);
+        if (!res.headersSent) {
+          res.statusCode = 500;
+          res.end(JSON.stringify({ msg: e.message }));
+        }
+      });
+      ws.on("finish", () => {
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ msg: "success", path: dest, name: safeName }));
+      });
+      ws.on("error", (e) => {
+        console.error("upload write error:", e);
+        if (!res.headersSent) {
+          res.statusCode = 500;
+          res.end(JSON.stringify({ msg: e.message }));
+        }
+      });
+      return;
+    }
+
   })
   .listen(thePort, () => {
     console.log("Server running at http://localhost:" + thePort);
