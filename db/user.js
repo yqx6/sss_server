@@ -1,3 +1,4 @@
+const path = require('path');
 const s = require('lowdb/node')
 const { v4 } = require('uuid')
 const { Low, JSONFilePreset } = s;
@@ -6,7 +7,11 @@ let db;
 // 用户管理
 
 const initLowDb = async () => {
-    db = await JSONFilePreset('../../db.json', { users: [] })
+    const dataDir = process.env.DATA_DIR || '.';
+    const dbPath = path.join(dataDir, 'db.json');
+    // fallback to legacy relative path if DATA_DIR not set
+    const finalPath = process.env.DATA_DIR ? dbPath : '../../db.json';
+    db = await JSONFilePreset(finalPath, { users: [] })
 }
 
 

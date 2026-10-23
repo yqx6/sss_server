@@ -23,8 +23,11 @@ RUN npm install --omit=dev
 # Copy source
 COPY . .
 
-# Video mount point (matches /video paths stored in groups)
-RUN mkdir -p /video /data
+# Seed db tables into the image data dir
+ENV DATA_DIR=/data
+RUN mkdir -p /data /video
+COPY data/db.json /data/db.json
+COPY data/cartoon_group.json /data/cartoon_group.json
 
 # lowdb writes to the container root by default; make it writable
 VOLUME ["/video", "/data"]

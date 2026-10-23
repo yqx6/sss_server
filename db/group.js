@@ -1,3 +1,4 @@
+const path = require('path');
 const s = require('lowdb/node')
 const { v4 } = require('uuid')
 const { Low, JSONFilePreset } = s;
@@ -6,7 +7,10 @@ let db;
 // 合集管理
 
 const initLowDb2 = async () => {
-    db = await JSONFilePreset('../../cartoon_group.json', { groups: [] })
+    const dataDir = process.env.DATA_DIR || '.';
+    const dbPath = path.join(dataDir, 'cartoon_group.json');
+    const finalPath = process.env.DATA_DIR ? dbPath : '../../cartoon_group.json';
+    db = await JSONFilePreset(finalPath, { groups: [] })
 }
 
 const addGroup = async (group) => {

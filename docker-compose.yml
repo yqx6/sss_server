@@ -2,7 +2,6 @@ version: "3.8"
 
 services:
   sss-server:
-    # 优先拉取已发布的镜像；如需本地构建，取消注释 build 并注释 image
     image: ghcr.io/yqx6/sss_server:latest
     # build:
     #   context: .
@@ -12,13 +11,13 @@ services:
     ports:
       - "8001:8001"
     volumes:
-      # 视频目录（按你的要求读写挂载）
+      # 视频目录（按要求读写挂载）
       - /volume1/video:/video:rw
-      # lowdb 数据文件持久化（容器根目录下的两个 json）
-      - ./data/cartoon_group.json:/cartoon_group.json
-      - ./data/db.json:/db.json
+      # db 表已内置于镜像 /data；named volume 持久化运行时写入（首次由镜像种子初始化）
+      - sss-data:/data
     environment:
       - NODE_ENV=production
+      - DATA_DIR=/data
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost:8001/getAllGroups"]
       interval: 30s
@@ -26,7 +25,5 @@ services:
       retries: 3
       start_period: 10s
 
-# 使用前请创建本地数据目录与空文件：
-#   mkdir -p ./data
-#   echo '{"groups":[]}' > ./data/cartoon_group.json
-#   echo '{"users":[]}'  > ./data/db.json
+volumes:
+  sss-data:
