@@ -27,10 +27,8 @@ docker run -d --name sss-server -p 8001:8001 \
 git clone https://github.com/yqx6/sss_server.git
 cd sss_server
 
-# prepare data files (first time only)
-mkdir -p data
-echo '{"groups":[]}' > data/cartoon_group.json
-echo '{"users":[]}'  > data/db.json
+# data files are baked into the image (seeded from archived tables);
+# runtime writes persist in the sss-data named volume.
 
 # if the image is private, log in first
 echo $GHCR_TOKEN | docker login ghcr.io -u yqx6 --password-stdin
