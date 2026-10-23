@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  sss-server:
+    # 优先拉取已发布的镜像；如需本地构建，取消注释 build 并注释 image
+    image: ghcr.io/yqx6/sss_server:latest
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    container_name: sss-server
+    restart: unless-stopped
+    ports:
+      - "8001:8001"
+    volumes:
+      # 视频目录（按你的要求读写挂载）
+      - /volume1/video:/video:rw
+      # lowdb 数据文件持久化（容器根目录下的两个 json）
+      - ./data/cartoon_group.json:/cartoon_group.json
+      - ./data/db.json:/db.json
+    environment:
+      - NODE_ENV=production
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8001/getAllGroups"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+# 使用前请创建本地数据目录与空文件：
+#   mkdir -p ./data
+#   echo '{"groups":[]}' > ./data/cartoon_group.json
+#   echo '{"users":[]}'  > ./data/db.json
