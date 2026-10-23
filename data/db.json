@@ -1,0 +1,58 @@
+{
+  "users": [
+    {
+      "id": "xiaolu-douyin",
+      "name": "xiaolu"
+    },
+    {
+      "id": "3f63d2c7-a22e-4334-b151-ef5cb7bc982f",
+      "name": "Cloud9",
+      "douyin_name": "小鹿英语启蒙"
+    },
+    {
+      "id": "1cc138ba-0137-449e-b91b-daacf57e3d6f",
+      "name": "laohe",
+      "douyin_name": "老何"
+    },
+    {
+      "id": "b02a66d2-d822-4278-be45-d9fe70eb917c",
+      "name": "momo",
+      "douyin_name": "墨墨"
+    },
+    {
+      "id": "f8631a9e-1d0c-4110-8f8b-f831ec6326c1",
+      "name": "ciren",
+      "douyin_name": "此人绝非扇贝"
+    },
+    {
+      "id": "06e41bda-0037-46ed-835a-4d5fbd722711",
+      "name": "xiaoyi",
+      "douyin_name": "金小亿"
+    },
+    {
+      "id": "b45f6d56-1c63-4992-b873-7c625d250f51",
+      "name": "l",
+      "douyin_name": "l"
+    },
+    {
+      "id": "cb584db9-addb-4b5e-819f-fef1c28f10ff",
+      "name": "lexiang",
+      "douyin_name": "乐响童橙"
+    },
+    {
+      "id": "6c30d943-0972-4d75-a93b-388dfe655d01",
+      "name": "danao",
+      "douyin_name": "大闹"
+    },
+    {
+      "id": "1d46d39f-fb59-441e-bec6-641d9dd458d3",
+      "name": "yaoyao",
+      "douyin_name": "窈窈"
+    },
+    {
+      "id": "b8bc7459-14ef-4400-84e1-3bfeb41f2e00",
+      "name": "yqx",
+      "douyin_name": "尹芊雪专属"
+    }
+  ]
+}

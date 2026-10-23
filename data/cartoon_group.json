@@ -1,0 +1,59 @@
+{
+  "groups": [
+    {
+      "id": "993b4900-ae17-42ad-b697-f3f5b9336cae",
+      "name": "超级简单儿歌",
+      "filePath": "/video/cartoon/sss"
+    },
+    {
+      "id": "28b9874b-8103-4980-83f2-ebaf733e83b3",
+      "name": "字母积木",
+      "filePath": "/video/cartoon/alpha"
+    },
+    {
+      "id": "777862dc-206e-49e3-b1d8-2176247c06a8",
+      "name": "亚卡·迪",
+      "filePath": "/video/cartoon/yakka"
+    },
+    {
+      "id": "0b4e5af6-b667-46e6-8c1d-5272fab4c1fd",
+      "name": "小P优优",
+      "filePath": "/video/cartoon/pocoyo"
+    },
+    {
+      "id": "330ded06-c08b-4e6a-af39-ca8adaab95c3",
+      "name": "嗨，道奇",
+      "filePath": "/video/cartoon/duggee"
+    },
+    {
+      "id": "fdf8057c-581c-4184-8b9e-bf21859e5787",
+      "name": "小学一年",
+      "filePath": "/video/cartoon/qx_en_grade1"
+    },
+    {
+      "id": "93ecf8f5-fa8f-4ca8-ad8f-b221eb919c43",
+      "name": "二胡",
+      "filePath": "/video/cartoon/qx_erhu"
+    },
+    {
+      "id": "56738662-986f-4381-b9a8-33a5503a0389",
+      "name": "蓝色小考拉",
+      "filePath": "/video/cartoon/kaola"
+    },
+    {
+      "id": "897a9a66-1d67-4e3e-bf33-e0e52af10ba5",
+      "name": "二胡-老师",
+      "filePath": "/video/cartoon/qx_erhu_teacher"
+    },
+    {
+      "id": "b432834c-937b-46f9-a562-94220d4823d4",
+      "name": "小鼠波波",
+      "filePath": "/video/cartoon/maisy"
+    },
+    {
+      "id": "eea7bf39-0776-4744-a006-b2a2a1f7bbc2",
+      "name": "二胡-名曲",
+      "filePath": "/video/cartoon/qx_erhu_song"
+    }
+  ]
+}
